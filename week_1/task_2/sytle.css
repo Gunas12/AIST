@@ -1,0 +1,33 @@
+#body{
+    top: 0;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+#btn{
+    font-size: 20px;
+    width: 100px;
+    height: 35px;
+    color: white;
+    background-color:#3ab63e;
+    border-radius:5px;
+    border:1px solid ;
+    margin: 20px;
+
+}
+#content{
+    display:block;
+    width:700px;
+    height: 50vh;
+    padding:50px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #3ab63e;
+    border: 2px solid #3ab63e;
+    border-radius:7px;
+    text-align: left;
+    background-color:rgba(240, 255, 255, 0.317);
+}

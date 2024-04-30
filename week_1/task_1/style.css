@@ -1,0 +1,29 @@
+#body{
+    top: 0;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#time{
+    text-align: center;
+    text-transform: uppercase;
+    color: #3ab63e;
+    
+}
+#content{
+    display:block;
+    width:500px;
+    height:90px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #3ab63e;
+    border: 2px solid #3ab63e;
+    border-radius:7px;
+    text-align: left;
+    background-color:rgba(240, 255, 255, 0.317);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

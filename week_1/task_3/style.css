@@ -1,0 +1,42 @@
+#body{
+    top: 0;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#content{
+    display:block;
+    width: 500px;
+    height: 300px;
+    padding:50px;
+
+    text-align: center;
+    text-transform: uppercase;
+    color: #3ab63e;
+    border: 1px solid #3ab63e;
+    border-radius:7px;
+    text-align: left;
+}
+#btn{
+    font-size: 20px;
+    width: 110px;
+    height: 35px;
+    color: white;
+    background-color:#3ab63e;
+    border-radius:5px;
+    border:1px solid ;
+    margin: 20px;
+
+}
+#result{
+    color: #3ab63e;
+    font-size:40px;
+   font-style: normal;
+   text-transform:lowercase;
+   text-align:center;
+  
+
+}
+

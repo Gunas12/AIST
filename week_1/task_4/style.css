@@ -1,0 +1,50 @@
+#body{
+    top: 0;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+#content{
+    display:block;
+    width: 750px;
+    height: 65vh;
+    padding:50px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+    border: 3px solid #3ab63e;
+    border-radius:8px;
+    text-align: center;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+.btn{
+    font-size: 20px;
+    width: 110px;
+    height: 35px;
+    color: white;
+    background-color:#3ab63e;
+    border-radius:5px;
+    border:2px solid ;
+    margin: 10px;
+}
+#guess{
+    color: #3ab63e;
+    font-size:30px;
+   font-style: normal;
+   text-align:center;
+}
+#h11{
+   text-transform: uppercase;
+   color: #0e6a10;
+   font-family: "Lucida Console", Monaco, monospace;
+   font-size: 40px;
+}
+.description{
+    font-size: 17px;
+    color: #0a560b;
+    text-transform:initial;
+}
+
