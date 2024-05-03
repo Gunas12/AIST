@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6%;
+    text-align: center;
+    background-color: plum;
+}
+.container {
+    width: 45%;
+    height: 75vh;
+    background-color: white;
+    border-radius: 15px;
+    font-family: cursive;}
+
+h1 {
+    font-weight: bolder;
+    color: purple;
+    margin: 20px 0;
+}
+
+input {
+
+    width: 300px;
+    height: 50px;
+    border: 2px solid;
+    margin: 10px;
+    font-style: "fantasy";
+    border: 3px solid purple;
+    border-radius: 5px;
+
+}
+button {
+    width: 80px;
+    height: 50px;
+    background-color: rgba(128, 0, 128, 0.700);
+    margin: 10px;
+    text-align: center;
+    font-weight: bolder;
+    border: 1px solid rgba(128, 0, 128, 0.700);
+    border-radius: 5px;
+    color: white;
+
+}
+
+button:hover {
+    border: 2px solid purple;
+
+}
+
+.delbut {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    margin: 5px;
+    text-align: center;
+    font-weight: bolder;
+    border: 1px solid red;
+    border-radius: 5px;
+    font-size: 18px;
+
+}
+.markbut{
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    margin: 5px;
+    text-align: center;
+    font-weight: bolder;
+    border: 1px solid blue;
+    border-radius: 5px;
+    font-size: 18px;
+    justify-content: flex-end;
+}
+
+.delbut:hover {
+    border: 1px solid rgb(163, 1, 1);
+
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #888; 
+}
+.list-item{
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   
+}

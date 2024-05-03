@@ -1,0 +1,73 @@
+/* Basic Styles */
+body {
+    margin: 0;
+    font-family: cursive;
+    background-color: rgba(221, 160, 221, 0.436);
+  }
+  nav {
+    height: 50px;
+    background-color:rgb(212, 119, 212);
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-size: 24px;
+    padding: 0px 20px;
+  }
+  .nav-links {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  }
+  .nav-links li {
+    padding: 10px;
+    
+  }
+  .nav-links li a {
+    text-decoration: none;
+    color: #fff;
+  }
+  .menu-toggle {
+    display: none; 
+  }
+ 
+  @media only screen and (max-width: 700px) {
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 65px;
+      left: 0;
+      width: 100%;
+      background-color: plum;
+      flex-direction: column;
+    }
+    .nav-links.active {
+      display:block;
+     
+    }
+    .menu-toggle {
+      display: block; 
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+  }
+  .btnn{
+    padding:9px 18px;
+    font-family: sans-serif;
+    color: #fff;
+    background-color: purple;
+    border-radius: 3px ;
+    border: 1px solid purple;
+    font-size: 16px;
+    margin-right: 5px;
+  }
+   

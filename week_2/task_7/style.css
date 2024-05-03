@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.file-explorer {
+    list-style: none;
+    padding: 0;
+}
+
+.folder {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.folder span {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px;
+}
+
+.folder:hover {
+    background-color: #f0f0f0;
+}
+
+.folder-controls button {
+    margin-right: 5px;
+}

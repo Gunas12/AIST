@@ -1,0 +1,40 @@
+<!--
+    2. Form Validation
+Description: Implement basic form validation for an HTML form that
+ includes fields for email, password, and a submit button.
+Expected Input: User inputs into the form fields.
+Expected Output: Display error messages if the email is not in a
+ valid format or the password is too short (less than 8 characters); 
+ otherwise, display a success message.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css"/>
+    <title>TASK_2</title>
+</head>
+<body>
+    <div class="container">
+        <div class="div2">
+    <h2>Form Validation</h2>
+    <form id="myForm">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <span class="error" id="emailError"></span>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <span class="error" id="passwordError"></span>
+        </div>
+        <button type="submit" id="btnn">Submit</button>
+    </form>
+    <div id="successMessage" class="success"></div>
+</div>
+</div>
+    <script src="./script.js"></script>
+</body>
+</html>

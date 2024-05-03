@@ -1,0 +1,41 @@
+body{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgba(221, 160, 221, 0.454);
+
+}
+#container{
+    width: 90%;
+    height: 80vh;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divv{
+    width: 70%;
+    height: 70vh;
+    border:3px solid purple;
+    border-radius: 7px;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.round{
+    width:48px;
+    height: 48px;
+    background-color: purple;
+    color: white;
+    margin: 8px;
+    border: 2px solid purple;
+    border-radius: 7px;
+
+}
+svg{
+    padding:4px;
+}
