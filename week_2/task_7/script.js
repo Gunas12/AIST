@@ -1,101 +1,121 @@
-// Function to create a new folder recursively
-function createFolderRecursively(parentFolder) {
-    var folderName = prompt("Enter folder name:");
-    if (folderName) {
-        var folder = document.createElement("div");
-        folder.className = "sub-folder";
-        folder.innerHTML = `
-            <span>${folderName}</span>
-            <div class="folder-controls">
-                <button class="create-file">Create File</button>
-                <button class="create-folder">Create Folder</button>
-                <button class="delete-folder">Delete Folder</button>
-                <button class="rename-folder">Rename Folder</button>
-            </div>
-            <div class="file-list"></div>
-        `;
-        parentFolder.appendChild(folder);
-        bindFolderEvents(folder);
+let folders = [];
 
-        // Ask if the user wants to create another subfolder
-        var createAnother = confirm("Do you want to create another subfolder?");
-        if (createAnother) {
-            createFolderRecursively(folder);
-        }
-    }
-}
-
-// Function to create a new folder
 function createFolder() {
-    var folderName = prompt("Enter folder name:");
+    const folderName = prompt("Enter folder name:");
     if (folderName) {
-        var folder = document.createElement("div");
-        folder.className = "folder";
-        folder.innerHTML = `
-            <span>${folderName}</span>
-            <div class="folder-controls">
-                <button class="create-file">Create File</button>
-                <button class="create-folder">Create Folder</button>
-                <button class="delete-folder">Delete Folder</button>
-                <button class="rename-folder">Rename Folder</button>
-            </div>
-            <div class="file-list"></div>
-        `;
-        document.getElementById("fileExplorer").appendChild(folder);
-        bindFolderEvents(folder);
-
-        // Ask if the user wants to create a subfolder
-        var createSubFolder = confirm("Do you want to create a subfolder?");
-        if (createSubFolder) {
-            createFolderRecursively(folder);
-        }
+        folders.push({ name: folderName, subfolders: [] });
+        renderFolders();
     }
 }
 
-// Function to delete a folder
-function deleteFolder(folder) {
-    folder.remove();
-}
-
-// Function to rename a folder
-function renameFolder(folder) {
-    var newName = prompt("Enter new folder name:");
+function renameFolder(index) {
+    const newName = prompt("Enter new name:", folders[index].name);
     if (newName) {
-        folder.querySelector("span").textContent = newName;
+        folders[index].name = newName;
+        renderFolders();
     }
 }
 
-// Function to create a file within a folder
-function createFile(folder) {
-    var fileName = prompt("Enter file name:");
-    if (fileName) {
-        var file = document.createElement("div");
-        file.className = "file";
-        file.textContent = fileName;
-        folder.querySelector(".file-list").appendChild(file);
+function deleteFolder(index) {
+    folders.splice(index, 1);
+    renderFolders();
+}
+
+function createSubfolder(parentIndex) {
+    const subfolderName = prompt("Enter subfolder name:");
+    if (subfolderName) {
+        folders[parentIndex].subfolders.push({ name: subfolderName, subfolders: [] });
+        renderFolders();
     }
 }
 
-// Function to bind events to a folder
-function bindFolderEvents(folder) {
-    var folderControls = folder.querySelector(".folder-controls");
+function renameSubfolder(parentIndex, subfolderIndex) {
+    const newName = prompt("Enter new name:", folders[parentIndex].subfolders[subfolderIndex].name);
+    if (newName) {
+        folders[parentIndex].subfolders[subfolderIndex].name = newName;
+        renderFolders();
+    }
+}
 
-    folderControls.querySelector(".create-file").addEventListener("click", function() {
-        createFile(folder);
-    });
+function deleteSubfolder(parentIndex, subfolderIndex) {
+    folders[parentIndex].subfolders.splice(subfolderIndex, 1);
+    renderFolders();
+}
 
-    folderControls.querySelector(".create-folder").addEventListener("click", function() {
-        createFolderRecursively(folder);
-    });
+function renderFolders() {
+    const foldersContainer = document.getElementById("folders");
+    foldersContainer.innerHTML = "";
+    folders.forEach((folder, index) => {
+        const folderElement = document.createElement("div");
+        folderElement.classList.add("folder");
 
-    folderControls.querySelector(".delete-folder").addEventListener("click", function() {
-        deleteFolder(folder);
-    });
+        const renameButton = document.createElement("button");
+        renameButton.textContent = "Rename";
+        renameButton.onclick = (event) => {
+            event.stopPropagation();
+            renameFolder(index);
+        };
 
-    folderControls.querySelector(".rename-folder").addEventListener("click", function() {
-        renameFolder(folder);
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = (event) => {
+            event.stopPropagation();
+            deleteFolder(index);
+        };
+
+        const createButton = document.createElement("button");
+        createButton.textContent = "Create Subfolder";
+        createButton.onclick = (event) => {
+            event.stopPropagation();
+            createSubfolder(index);
+        };
+
+        folderElement.textContent = `${index + 1}. ${folder.name}`;
+        folderElement.prepend(deleteButton, renameButton, createButton);
+
+        foldersContainer.appendChild(folderElement);
+
+        if (folder.subfolders.length > 0) {
+            renderSubfolders(folder.subfolders, folderElement, index);
+        }
     });
 }
 
-// Event listener for creating a folder
-document.getElementById("createFolderBtn").addEventListener("click", createFolder);
+function renderSubfolders(subfolders, parentElement, parentIndex) {
+    subfolders.forEach((subfolder, index) => {
+        const subfolderElement = document.createElement("div");
+        subfolderElement.classList.add("folder");
+
+        const renameButton = document.createElement("button");
+        renameButton.textContent = "Rename";
+        renameButton.onclick = (event) => {
+            event.stopPropagation();
+            renameSubfolder(parentIndex, index);
+        };
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = (event) => {
+            event.stopPropagation();
+            deleteSubfolder(parentIndex, index);
+        };
+
+        const createButton = document.createElement("button");
+        createButton.textContent = "Create Subfolder";
+        createButton.onclick = (event) => {
+            event.stopPropagation();
+            createSubfolder(parentIndex);
+        };
+
+        subfolderElement.textContent = `    - ${subfolder.name}`;
+        subfolderElement.prepend(deleteButton, renameButton, createButton);
+
+        parentElement.appendChild(subfolderElement);
+
+        if (subfolder.subfolders.length > 0) {
+            renderSubfolders(subfolder.subfolders, subfolderElement, parentIndex);
+        }
+    });
+}
+
+renderFolders();

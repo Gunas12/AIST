@@ -14,11 +14,12 @@ Description: Develop a file-explorer imitator,
     <title>TASK_7</title>
 </head>
 <body>
-    <div class="container">
-        <h1>File Explorer</h1>
-        <button id="createFolderBtn">Create Folder</button>
-        <div id="fileExplorer" class="file-explorer">
-            <!-- File explorer content will be added dynamically using JavaScript -->
+    <div id="fileExplorer">
+        <div id="toolbar">
+            <button onclick="createFolder()">Create Folder</button>
+            
+        </div>
+        <div id="folders">
         </div>
     </div>
     <script src="./script.js"></script>
