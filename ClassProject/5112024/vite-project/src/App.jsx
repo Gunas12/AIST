@@ -76,7 +76,7 @@ function App() {
     const selectedBrandName = event.target.value;
     setSelectedBrand(selectedBrandName);
 
-    // Find the selected brand object
+    
     const selectedBrandObject = carBrands.find(brand => brand.name === selectedBrandName);
 
     if (selectedBrandObject) {
@@ -95,7 +95,7 @@ function App() {
       <Button type="primary" onClick={showModal}>
         Open Modal
       </Button>
-      <Modal title="Basic Modal" visible={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
         <div>
           <label>Maşın növü</label>
           <select value={selectedType} onChange={handleTypeChange}>
