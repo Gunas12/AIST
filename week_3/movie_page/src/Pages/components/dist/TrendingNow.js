@@ -1,0 +1,87 @@
+"use strict";
+exports.__esModule = true;
+var react_1 = require("react");
+var axios_1 = require("axios");
+var gr_1 = require("react-icons/gr");
+var fa_1 = require("react-icons/fa");
+function TrendingNow() {
+    var _a = react_1.useState([]), movies = _a[0], setMovies = _a[1];
+    var _b = react_1.useState(1), currentPage = _b[0], setCurrentPage = _b[1];
+    var _c = react_1.useState(1), totalPages = _c[0], setTotalPages = _c[1];
+    var _d = react_1.useState(5), cardsPerPage = _d[0], setCardsPerPage = _d[1]; // Number of cards per page
+    react_1.useEffect(function () {
+        fetchData();
+        handleResize(); // Call handleResize initially to set cards per page based on initial screen size
+        window.addEventListener('resize', handleResize); // Add event listener for window resize
+        return function () { return window.removeEventListener('resize', handleResize); }; // Remove event listener on component unmount
+    }, []);
+    react_1.useEffect(function () {
+        setTotalPages(Math.ceil(movies.length / cardsPerPage));
+    }, [movies, cardsPerPage]);
+    var fetchData = function () {
+        axios_1["default"].get("https://api.themoviedb.org/3/movie/upcoming?api_key=2872128c1cdccd2dce197bbadac76051&page=1")
+            .then(function (response) {
+            var result = response.data.results;
+            setMovies(result);
+        })["catch"](function (error) {
+            console.error('Error fetching data:', error);
+        });
+    };
+    var goToPreviousPage = function () {
+        setCurrentPage(function (prevPage) { return (prevPage === 1 ? 1 : prevPage - 1); });
+    };
+    var goToNextPage = function () {
+        setCurrentPage(function (prevPage) { return (prevPage === totalPages ? totalPages : prevPage + 1); });
+    };
+    var paginate = function (pageNumber) { return setCurrentPage(pageNumber); };
+    var getPageNumbers = function () {
+        var maxButtons = 3; // Maximum number of pagination buttons to display
+        var half = Math.floor(maxButtons / 2);
+        var start = Math.max(currentPage - half, 1);
+        var end = start + maxButtons - 1;
+        if (end > totalPages) {
+            end = totalPages;
+            start = Math.max(end - maxButtons + 1, 1);
+        }
+        return Array.from({ length: end - start + 1 }, function (_, i) { return start + i; });
+    };
+    var formatPopularity = function (popularity) {
+        return Math.floor(popularity).toString() + 'K';
+    };
+    var handleResize = function () {
+        if (window.innerWidth <= 768) {
+            setCardsPerPage(1); // Set cards per page to 1 for smaller screens (e.g., mobile devices)
+        }
+        else if (window.innerWidth <= 930) {
+            setCardsPerPage(2); // Set cards per page to 2 for screens between 768px and 930px
+        }
+        else if (window.innerWidth <= 1250) {
+            setCardsPerPage(3); // Set cards per page to 3 for screens between 930px and 1250px
+        }
+        else {
+            setCardsPerPage(5); // Set cards per page to 5 for larger screens
+        }
+    };
+    return (react_1["default"].createElement("div", null,
+        react_1["default"].createElement("div", { className: "head" },
+            react_1["default"].createElement("h2", null, "Trending Now"),
+            react_1["default"].createElement("div", { className: "pagination" },
+                react_1["default"].createElement("button", { onClick: goToPreviousPage },
+                    react_1["default"].createElement(gr_1.GrLinkPrevious, { style: { width: '26px', height: '26px' } })),
+                getPageNumbers().map(function (pageNumber) { return (react_1["default"].createElement("button", { key: pageNumber, onClick: function () { return paginate(pageNumber); }, className: pageNumber === currentPage ? "active" : "", style: { width: '20px', height: '20px', border: '0', margin: '0', padding: '0', backgroundColor: '#0F0F0F', color: currentPage === pageNumber ? 'red' : '' } },
+                    react_1["default"].createElement("h1", null,
+                        react_1["default"].createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "25", height: "16", fill: "currentColor", className: "bi bi-dash", viewBox: "0 0 16 16" },
+                            react_1["default"].createElement("path", { d: "M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" }))))); }),
+                react_1["default"].createElement("button", { onClick: goToNextPage },
+                    react_1["default"].createElement(gr_1.GrLinkNext, { style: { width: '26px', height: '26px' } })))),
+        react_1["default"].createElement("div", { className: 'genres-container img_cart' }, movies.slice((currentPage - 1) * cardsPerPage, currentPage * cardsPerPage).map(function (item) { return (react_1["default"].createElement("div", { key: item.id, className: "krt" },
+            item.poster_path && (react_1["default"].createElement("img", { className: "imgg", src: "https://image.tmdb.org/t/p/w200" + item.poster_path, alt: item.title + " Poster" })),
+            react_1["default"].createElement("div", { className: "divt" },
+                react_1["default"].createElement("p", null,
+                    " ",
+                    formatPopularity(item.popularity),
+                    " "),
+                react_1["default"].createElement("p", null,
+                    react_1["default"].createElement(fa_1.FaEye, { className: ".ico", style: { width: '26px', height: '26px', margin: "5px" } }))))); }))));
+}
+exports["default"] = TrendingNow;

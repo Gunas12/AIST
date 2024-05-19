@@ -1,0 +1,82 @@
+.footer {
+  width: 83%;
+  height: 55vh;
+  padding: 50px 0px;
+  margin: 20px 0px;
+}
+.footer hr {
+  margin: 20px 0px;
+  color: #262626;
+}
+.footer .ft_ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.footer .ft_ul li {
+  font-family: "Manrope";
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  text-align: left;
+  color: #999999;
+  padding: 5px 0px;
+}
+.footer .ft_ul li button {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #1A1A1A;
+  background-color: #1A1A1A;
+  margin: 5px;
+}
+.footer .ft_ul li button .btn_icn {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+.footer .ft_ul .li_h {
+  font-family: "Manrope";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: left;
+  color: white;
+}
+.footer .hr_txt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+  font-family: "Manrope";
+  flex-wrap: wrap;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: left;
+  color: #999999;
+}
+.footer .hr_txt a {
+  margin-right: 50px;
+}
+
+@media screen and (max-width: 1000px) {
+  .footer {
+    height: 70vh;
+  }
+}
+@media screen and (max-width: 850px) {
+  .footer {
+    height: 76vh;
+  }
+}
+@media screen and (max-width: 650px) {
+  .footer {
+    height: 90vh;
+  }
+}
+@media screen and (max-width: 500px) {
+  .footer {
+    height: 140vh;
+  }
+}

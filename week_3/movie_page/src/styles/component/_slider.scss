@@ -1,0 +1,149 @@
+.cont{
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #141414;
+.slide-container {
+    width: 80%;
+    height: 85vh;
+    background-color: #141414;
+
+    margin: 0;
+    padding: 0;
+h3{
+    font-family: "Manrope", sans-serif;
+font-size: 38px;
+font-weight: 700;
+line-height: 57px;
+text-align: center;
+color: #fff;
+
+}
+p{
+    font-family: "Manrope", sans-serif;
+font-size: 16px;
+font-weight: 500;
+line-height: 27px;
+text-align: center;
+color:#999999;
+
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .play-button{
+        background-color:#E50000;
+        color: #fff;
+        width: 157px;
+        height:56px;
+        padding: 14px 24px;
+        gap: 4px;
+        border-radius: 8px;
+        opacity: 0px;
+    
+    
+    }
+    
+
+}
+    .movieContainer {
+        position: relative;
+        height: 85vh;
+
+        img {
+            width: 100%;
+            height: 80vh;
+            object-fit: cover;
+            border:1px solid #141414;
+            border-radius: 12px;
+        }
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items:first baseline;
+        border:1px solid #141414;
+        border-radius: 12px;
+
+        video {
+            width: 50%;
+            max-width: 800px;
+            padding-top: 15px;
+           
+            
+        }
+    }
+
+    .button-container {
+        position: absolute;
+        bottom: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        button {
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            background-color: rgba(0, 0, 0, 0.712);
+            color: white;
+            border-radius:5px;
+            width: 56px;
+            height: 56px;
+            text-align: center;
+            &.liked {
+                color: blue;
+            }
+
+            &.muted {
+                color: #999;
+            }
+            
+        }
+        .play-button{
+            background-color:#E50000;
+            color: #fff;
+            width: 157px;
+            height:56px;
+            padding: 14px 24px;
+            gap: 4px;
+            border-radius: 8px;
+        
+        
+        }
+    }
+
+    
+}
+}
+.splide__track{
+    height:80vh;
+}
+.splide__arrows {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.movieContainer{
+&::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.244); /* Yarı saydam beyaz */
+    
+}}
